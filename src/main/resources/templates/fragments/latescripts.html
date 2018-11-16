@@ -1,0 +1,88 @@
+<script src="../lib/jquery/js/jquery.js"></script>
+    <script src="../lib/popper.js/js/popper.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <script src="../lib/jquery.cookie/js/jquery.cookie.js"></script>
+    <script src="../lib/d3/js/d3.js"></script>
+    <script src="../lib/rickshaw/js/rickshaw.min.js"></script>
+    <script src="../lib/chart.js/js/Chart.js"></script>
+
+    <script src="../js/slim.js"></script>
+    <script src="../js/ResizeSensor.js"></script>
+    <script>
+      $(function(){
+        'use strict'
+
+        var rs3 = new Rickshaw.Graph({
+          element: document.querySelector('#rs3'),
+          renderer: 'line',
+          series: [{
+            data: [
+              { x: 0, y: 5 },
+              { x: 1, y: 7 },
+              { x: 2, y: 10 },
+              { x: 3, y: 11 },
+              { x: 4, y: 12 },
+              { x: 5, y: 10 },
+              { x: 6, y: 9 },
+              { x: 7, y: 7 },
+              { x: 8, y: 6 },
+              { x: 9, y: 8 },
+              { x: 10, y: 9 },
+              { x: 11, y: 10 },
+              { x: 12, y: 7 },
+              { x: 13, y: 10 }
+            ],
+            color: '#1B84E7',
+          }]
+        });
+        rs3.render();
+
+        // Responsive Mode
+        new ResizeSensor($('.slim-mainpanel'), function(){
+          rs3.configure({
+            width: $('#rs3').width(),
+            height: $('#rs3').height()
+          });
+          rs3.render();
+        });
+
+
+        var ctx1 = document.getElementById('chartBar1').getContext('2d');
+        var myChart1 = new Chart(ctx1, {
+          type: 'bar',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 39, 20, 10, 25, 18, 12, 39, 20, 10, 25, 18],
+              backgroundColor: '#27AAC8'
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            legend: {
+              display: false,
+                labels: {
+                  display: false
+                }
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true,
+                  fontSize: 10,
+                  max: 80
+                }
+              }],
+              xAxes: [{
+                ticks: {
+                  beginAtZero:true,
+                  fontSize: 11
+                }
+              }]
+            }
+          }
+        });
+
+      });
+    </script>
