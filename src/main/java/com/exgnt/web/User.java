@@ -3,6 +3,9 @@ package com.exgnt.web;
 public class User {
 
 	public String firstName, lastName, email;
+	
+	public String GlobalID;
+	
 
 	public User() {
 		this.firstName="Adrian";
