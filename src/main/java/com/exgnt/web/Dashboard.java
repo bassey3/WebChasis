@@ -10,8 +10,10 @@ public class Dashboard {
 
     @GetMapping("/dashboard")
     public String dashboard(@RequestParam(name="name", required=false, defaultValue="Fred") String name, Model model) {
-        model.addAttribute("name", name);
-        System.out.println("name");
+        User user = new User();
+        model.addAttribute(user);
+    	model.addAttribute("name", name);
+        //System.out.println("name");
         return "index5";
     }
 }
