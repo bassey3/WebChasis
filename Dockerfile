@@ -9,8 +9,8 @@ WORKDIR /
 
 
 # Adding source, compile and package into a fat jar
-ADD /target/WebChasis-0.0.1-SNAPSHOT.jar
+ADD /target/WebChasis-0.0.1-SNAPSHOT.jar /target/WebChasis-0.0.1-SNAPSHOT.jar
 
 
 EXPOSE 8092
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "WebChasis-0.0.1-SNAPSHOT.jar"]
+CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "/target/WebChasis-0.0.1-SNAPSHOT.jar"]
